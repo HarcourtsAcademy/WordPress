@@ -3437,7 +3437,7 @@ function is_email( $email, $deprecated = false ) {
 
 	// LOCAL PART
 	// Test for invalid characters.
-	if ( ! preg_match( '/^[a-zA-Z0-9\(\)!#$%&\'*+\/=?^_`{|}~\.-]+$/', $local ) ) {  // HA-WP#001
+	if ( ! preg_match( '/^[a-zA-Z0-9!#$%&\'*+\/=?^_`{|}~\.-]+$/', $local ) ) {
 		/** This filter is documented in wp-includes/formatting.php */
 		return apply_filters( 'is_email', false, $email, 'local_invalid_chars' );
 	}
@@ -3647,7 +3647,7 @@ function sanitize_email( $email ) {
 
 	// LOCAL PART
 	// Test for invalid characters.
-	$local = preg_replace( '/[^a-zA-Z0-9\(\)!#$%&\'*+\/=?^_`{|}~\.-]/', '', $local ); // HA-WP#001
+	$local = preg_replace( '/[^a-zA-Z0-9!#$%&\'*+\/=?^_`{|}~\.-]/', '', $local );
 	if ( '' === $local ) {
 		/** This filter is documented in wp-includes/formatting.php */
 		return apply_filters( 'sanitize_email', '', $email, 'local_invalid_chars' );
